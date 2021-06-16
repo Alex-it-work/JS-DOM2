@@ -34,3 +34,53 @@ elem.classList.toggle("www");
 // 3. Вставьте элементы массива объектов (id, title, description) в конец ul так, чтобы каждый на каждый объект был свой li.
 // Сделайте так, чтобы по нажатию на li - он подсвечивался другим цветом.
 // Сделайте так, чтобы по нажатию на кнопку внутри li эта li удалялась из разметки.
+
+const list = document.createElement("ul");
+document.body.append(list);
+
+const arrayObj = [
+  {
+    id: "0",
+    title: "title0",
+    description: "description0",
+  },
+  {
+    id: "1",
+    title: "title1",
+    description: "description1",
+  },
+  {
+    id: "2",
+    title: "title2",
+    description: "description2",
+  },
+];
+
+arrayObj.forEach(item => {
+  const { id, title, description } = item;
+  const value = `${id}  ${title}  ${description}`;
+  const li = createListItem(value);
+  list.append(li);
+});
+
+function createListItem(value) {
+  const li = document.createElement("li");
+  li.append(document.createTextNode(value), createButton());
+  li.addEventListener("click", liHandler);
+  return li;
+}
+
+function createButton() {
+  const button = document.createElement("button");
+  button.addEventListener("click", buttonHandler);
+  button.textContent = "X";
+  return button;
+}
+
+function buttonHandler(e) {
+  e.target.parentNode.remove();
+}
+
+function liHandler(e) {
+  e.target.classList.toggle("changeColor");
+}
