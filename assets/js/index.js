@@ -56,8 +56,7 @@ const arrayObj = [
   },
 ];
 
-arrayObj.forEach(item => {
-  const { id, title, description } = item;
+arrayObj.forEach(({ id, title, description }) => {
   const value = `${id}  ${title}  ${description}`;
   const li = createListItem(value);
   list.append(li);
