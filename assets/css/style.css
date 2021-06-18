@@ -12,3 +12,10 @@ li > button {
 .changeColor {
   background-color: rgba(61, 226, 55, 0.267);
 }
+
+.valid {
+  border-color: aquamarine;
+}
+.invalid {
+  border-color: brown;
+}

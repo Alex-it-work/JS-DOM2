@@ -4,6 +4,19 @@
 const divTask1 = document.querySelector("#task1");
 
 const inputParam = document.createElement("input");
+inputParam.maxLength = "6";
+const regExpNum = /^[0-9]{0,5}$/;
+
+inputParam.oninput = ({ target: { value } }) => {
+  if (regExpNum.test(value)) {
+    inputParam.classList.add("valid");
+    inputParam.classList.remove("invalid");
+  } else {
+    inputParam.classList.add("invalid");
+    inputParam.classList.remove("valid");
+  }
+};
+
 const inputSphereVolume = document.createElement("input");
 inputParam.placeholder = "sphere radius...";
 inputParam.autofocus = true;
